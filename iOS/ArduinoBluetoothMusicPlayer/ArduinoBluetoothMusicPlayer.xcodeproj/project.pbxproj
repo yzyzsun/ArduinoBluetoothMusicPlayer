@@ -14,16 +14,6 @@
 		9D0ABC5D1B8F7B8800FB0A23 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0ABC5B1B8F7B8800FB0A23 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9D0ABC631B8F7B8800FB0A23 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9D0ABC451B8F7B8700FB0A23 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9D0ABC4C1B8F7B8700FB0A23;
-			remoteInfo = ArduinoBluetoothMusicPlayer;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		9D0ABC4D1B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArduinoBluetoothMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D0ABC511B8F7B8800FB0A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,18 +22,10 @@
 		9D0ABC571B8F7B8800FB0A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D0ABC591B8F7B8800FB0A23 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D0ABC5C1B8F7B8800FB0A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9D0ABC621B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArduinoBluetoothMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9D0ABC4A1B8F7B8700FB0A23 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9D0ABC5F1B8F7B8800FB0A23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -65,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				9D0ABC4D1B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayer.app */,
-				9D0ABC621B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,7 +54,6 @@
 		9D0ABC4F1B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				9D0ABC521B8F7B8800FB0A23 /* AppDelegate.swift */,
 				9D0ABC541B8F7B8800FB0A23 /* ViewController.swift */,
 				9D0ABC561B8F7B8800FB0A23 /* Main.storyboard */,
 				9D0ABC501B8F7B8800FB0A23 /* Supporting Files */,
@@ -84,6 +64,7 @@
 		9D0ABC501B8F7B8800FB0A23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9D0ABC521B8F7B8800FB0A23 /* AppDelegate.swift */,
 				9D0ABC591B8F7B8800FB0A23 /* Images.xcassets */,
 				9D0ABC511B8F7B8800FB0A23 /* Info.plist */,
 				9D0ABC5B1B8F7B8800FB0A23 /* LaunchScreen.xib */,
@@ -111,24 +92,6 @@
 			productReference = 9D0ABC4D1B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9D0ABC611B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9D0ABC6F1B8F7B8800FB0A23 /* Build configuration list for PBXNativeTarget "ArduinoBluetoothMusicPlayerTests" */;
-			buildPhases = (
-				9D0ABC5E1B8F7B8800FB0A23 /* Sources */,
-				9D0ABC5F1B8F7B8800FB0A23 /* Frameworks */,
-				9D0ABC601B8F7B8800FB0A23 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9D0ABC641B8F7B8800FB0A23 /* PBXTargetDependency */,
-			);
-			name = ArduinoBluetoothMusicPlayerTests;
-			productName = ArduinoBluetoothMusicPlayerTests;
-			productReference = 9D0ABC621B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -140,10 +103,6 @@
 				TargetAttributes = {
 					9D0ABC4C1B8F7B8700FB0A23 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					9D0ABC611B8F7B8800FB0A23 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 9D0ABC4C1B8F7B8700FB0A23;
 					};
 				};
 			};
@@ -161,7 +120,6 @@
 			projectRoot = "";
 			targets = (
 				9D0ABC4C1B8F7B8700FB0A23 /* ArduinoBluetoothMusicPlayer */,
-				9D0ABC611B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -177,13 +135,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9D0ABC601B8F7B8800FB0A23 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -196,22 +147,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9D0ABC5E1B8F7B8800FB0A23 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9D0ABC641B8F7B8800FB0A23 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9D0ABC4C1B8F7B8700FB0A23 /* ArduinoBluetoothMusicPlayer */;
-			targetProxy = 9D0ABC631B8F7B8800FB0A23 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9D0ABC561B8F7B8800FB0A23 /* Main.storyboard */ = {
@@ -334,40 +270,6 @@
 			};
 			name = Release;
 		};
-		9D0ABC701B8F7B8800FB0A23 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ArduinoBluetoothMusicPlayerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ArduinoBluetoothMusicPlayer.app/ArduinoBluetoothMusicPlayer";
-			};
-			name = Debug;
-		};
-		9D0ABC711B8F7B8800FB0A23 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ArduinoBluetoothMusicPlayerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ArduinoBluetoothMusicPlayer.app/ArduinoBluetoothMusicPlayer";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -387,14 +289,7 @@
 				9D0ABC6E1B8F7B8800FB0A23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		9D0ABC6F1B8F7B8800FB0A23 /* Build configuration list for PBXNativeTarget "ArduinoBluetoothMusicPlayerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9D0ABC701B8F7B8800FB0A23 /* Debug */,
-				9D0ABC711B8F7B8800FB0A23 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -27,7 +27,6 @@ void setup() {
 void loop() {
   if (Serial.available()) {
     MPCommand cmd = (MPCommand)Serial.read();
-    Serial.write(cmd);
     switch (cmd) {
     case MP_PLAY:
       player.opResume();
