@@ -13,6 +13,10 @@
 * iPhone 5s (iOS 8)
 * 迷你音响
 
+## 示意图
+
+![Sketch](./sketch.png)
+
 ## 参考资料
 
 * [Bluno SKU:DFR0267 - DFRobot Wiki](http://www.dfrobot.com/wiki/index.php/Bluno_SKU:DFR0267)
