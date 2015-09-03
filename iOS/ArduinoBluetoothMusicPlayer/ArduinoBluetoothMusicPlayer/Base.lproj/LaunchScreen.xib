@@ -17,23 +17,39 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arduino" translatesAutoresizingMaskIntoConstraints="NO" id="ome-hD-Tue">
-                    <rect key="frame" x="112" y="69" width="256" height="256"/>
+                    <rect key="frame" x="160" y="90" width="160" height="160"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="256" id="OgJ-VZ-J6r"/>
-                        <constraint firstAttribute="height" constant="256" id="hVd-sw-2ba"/>
+                        <constraint firstAttribute="width" constant="160" id="OgJ-VZ-J6r"/>
+                        <constraint firstAttribute="height" constant="160" id="hVd-sw-2ba"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arduino Bluetooth Music Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPc-HW-7ed">
+                    <rect key="frame" x="90" y="266" width="302" height="24"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="ome-hD-Tue" secondAttribute="centerY" constant="43" id="38h-wt-sb3"/>
+                <constraint firstAttribute="centerY" secondItem="ome-hD-Tue" secondAttribute="centerY" constant="70" id="38h-wt-sb3"/>
                 <constraint firstAttribute="centerX" secondItem="ome-hD-Tue" secondAttribute="centerX" id="3Eu-bV-2LM"/>
+                <constraint firstItem="XPc-HW-7ed" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="85" id="EYQ-r5-LNg"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
+                <constraint firstAttribute="centerX" secondItem="XPc-HW-7ed" secondAttribute="centerX" constant="-0.5" id="TCP-uf-yfD"/>
+                <constraint firstItem="XPc-HW-7ed" firstAttribute="top" secondItem="ome-hD-Tue" secondAttribute="bottom" constant="16" id="W4g-Ct-OSM"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
+                <constraint firstAttribute="centerY" secondItem="XPc-HW-7ed" secondAttribute="centerY" constant="-17" id="uTC-JZ-8AC"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="EYQ-r5-LNg"/>
+                    <exclude reference="uTC-JZ-8AC"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="364" y="391"/>
         </view>
     </objects>
