@@ -2,6 +2,9 @@
 #include <SPI.h>
 #include <MusicPlayer.h>
 
+#define STEP (MAXVOL / 16)
+#define BOUND MAXVOL
+
 typedef enum {
   MP_PLAY = 'a',
   MP_PAUSE,
@@ -11,6 +14,7 @@ typedef enum {
   MP_NEXT,
   MP_VOL_UP,
   MP_VOL_DOWN,
+  MP_VOL_CHANGE,
   MP_MODE_NORMAL,
   MP_MODE_SHUFFLE,
   MP_MODE_LIST,
@@ -21,10 +25,16 @@ void setup() {
   Serial.begin(115200);
   player.begin();
   player.setPlayMode(PM_NORMAL_PLAY);
+  player.setVolume(BOUND / 2);
   player.scanAndPlayAll();
 }
 
 void loop() {
+  // vol is in fact reversed
+  // constant SILENT(0) stands for maximum vol
+  // as MAXVOL(254) stands for minimum vol
+  static unsigned char vol = BOUND / 2;
+  
   if (Serial.available()) {
     MPCommand cmd = (MPCommand)Serial.read();
     switch (cmd) {
@@ -47,10 +57,19 @@ void loop() {
       player.opNextSong();
       break;
     case MP_VOL_UP:
-      player.opVolumeUp();
+      if (vol < STEP) vol = 0;
+      else vol -= STEP;
+      player.setVolume(vol);
       break;
     case MP_VOL_DOWN:
-      player.opVolumeDown();
+      if (vol > BOUND - STEP) vol = BOUND;
+      else vol += STEP;
+      player.setVolume(vol);
+      break;
+    case MP_VOL_CHANGE:
+      while (!Serial.available());
+      vol = map(Serial.read(), 0, 16, MAXVOL, SILENT);
+      player.setVolume(vol);
       break;
     case MP_MODE_NORMAL:
       player.setPlayMode(PM_NORMAL_PLAY);
@@ -66,5 +85,6 @@ void loop() {
       break;
     }
   }
+  
   player.play();
 }
