@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var logView: UITextView!
     @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var volumeStepper: UIStepper!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var resumeButton: UIButton!
     
@@ -19,9 +20,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeVolumeBySlider(sender: UISlider) {
+        volumeStepper.value = Double(sender.value);
     }
-    
-    @IBAction func changeVolumeByStepper(sender: AnyObject) {
+    @IBAction func changeVolumeByStepper(sender: UIStepper) {
+        volumeSlider.value = Float(sender.value);
     }
     
     @IBAction func pause() {

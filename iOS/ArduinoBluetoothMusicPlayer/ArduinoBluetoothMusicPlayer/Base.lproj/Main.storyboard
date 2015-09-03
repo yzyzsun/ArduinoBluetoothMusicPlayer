@@ -86,13 +86,13 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NWB-zr-F9f">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="0.0" maxValue="16" translatesAutoresizingMaskIntoConstraints="NO" id="NWB-zr-F9f">
                                 <rect key="frame" x="86" y="403" width="398" height="31"/>
                                 <connections>
                                     <action selector="changeVolumeBySlider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Ma9-CX-cb9"/>
                                 </connections>
                             </slider>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oXt-Yx-OCa">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" maximumValue="16" translatesAutoresizingMaskIntoConstraints="NO" id="oXt-Yx-OCa">
                                 <rect key="frame" x="490" y="403" width="94" height="29"/>
                                 <connections>
                                     <action selector="changeVolumeByStepper:" destination="vXZ-lx-hvc" eventType="valueChanged" id="VLw-Rx-X2k"/>
@@ -253,6 +253,7 @@
                         <outlet property="pauseButton" destination="jsM-Xo-TGS" id="jYF-FU-Nh2"/>
                         <outlet property="resumeButton" destination="9e8-bM-DS7" id="m7a-g0-XZ1"/>
                         <outlet property="volumeSlider" destination="NWB-zr-F9f" id="ret-yT-zPg"/>
+                        <outlet property="volumeStepper" destination="oXt-Yx-OCa" id="84p-7p-5Yk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
