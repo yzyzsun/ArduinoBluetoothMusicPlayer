@@ -20,19 +20,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeVolumeBySlider(sender: UISlider) {
-        volumeStepper.value = Double(sender.value);
+        volumeStepper.value = Double(sender.value)
     }
     @IBAction func changeVolumeByStepper(sender: UIStepper) {
-        volumeSlider.value = Float(sender.value);
+        volumeSlider.value = Float(sender.value)
     }
     
     @IBAction func pause() {
-        pauseButton.hidden = true;
-        resumeButton.hidden = false;
+        pauseButton.hidden = true
+        resumeButton.hidden = false
     }
     @IBAction func resume() {
-        resumeButton.hidden = true;
-        pauseButton.hidden = false;
+        resumeButton.hidden = true
+        pauseButton.hidden = false
     }
     
     @IBAction func prev() {
@@ -46,7 +46,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resumeButton.hidden = true;
     }
 
 }

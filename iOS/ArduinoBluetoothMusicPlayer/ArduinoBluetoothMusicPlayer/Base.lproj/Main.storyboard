@@ -153,7 +153,7 @@
                                     <action selector="next" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TCs-5s-wQK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9e8-bM-DS7">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9e8-bM-DS7">
                                 <rect key="frame" x="250" y="492" width="100" height="44"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="32"/>
                                 <state key="normal" title="">
@@ -237,10 +237,10 @@
                                 <exclude reference="Roq-N4-1VA"/>
                                 <exclude reference="m3z-Oc-NL2"/>
                                 <exclude reference="EKT-VU-Zaw"/>
+                                <exclude reference="rBw-gi-QDc"/>
                                 <exclude reference="ZY6-da-w16"/>
                                 <exclude reference="aus-uc-QXj"/>
                                 <exclude reference="iaI-cN-FkO"/>
-                                <exclude reference="rBw-gi-QDc"/>
                                 <exclude reference="pB4-Qp-O3v"/>
                                 <exclude reference="Lqm-g1-hzA"/>
                                 <exclude reference="i7b-eC-mMV"/>
