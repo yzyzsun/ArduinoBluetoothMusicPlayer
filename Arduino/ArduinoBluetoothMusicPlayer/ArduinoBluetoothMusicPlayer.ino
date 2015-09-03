@@ -6,8 +6,8 @@
 #define BOUND MAXVOL
 
 typedef enum {
-  MP_PLAY = 'a',
-  MP_PAUSE,
+  MP_PAUSE = 'a',
+  MP_RESUME,
   MP_BACKWARD,
   MP_FORWARD,
   MP_PREV,
@@ -38,11 +38,13 @@ void loop() {
   if (Serial.available()) {
     MPCommand cmd = (MPCommand)Serial.read();
     switch (cmd) {
-    case MP_PLAY:
-      player.opResume();
-      break;
     case MP_PAUSE:
+      Serial.write("[Pause]\r\n");
       player.opPause();
+      break;
+    case MP_RESUME:
+      Serial.write("[Resume]\r\n");
+      player.opResume();
       break;
     case MP_BACKWARD:
       player.opFastRewind();
@@ -72,15 +74,19 @@ void loop() {
       player.setVolume(vol);
       break;
     case MP_MODE_NORMAL:
+      Serial.write("Mode changed to Normal\r\n");
       player.setPlayMode(PM_NORMAL_PLAY);
       break;
     case MP_MODE_SHUFFLE:
+      Serial.write("Mode changed to Shuffle\r\n");
       player.setPlayMode(PM_SHUFFLE_PLAY);
       break;
     case MP_MODE_LIST:
+      Serial.write("Mode changed to RepeatList\r\n");
       player.setPlayMode(PM_REPEAT_LIST);
       break;
     case MP_MODE_SINGLE:
+      Serial.write("Mode changed to RepeatSingle\r\n");
       player.setPlayMode(PM_REPEAT_ONE);
       break;
     }
