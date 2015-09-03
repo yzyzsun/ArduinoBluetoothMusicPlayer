@@ -10,16 +10,41 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var logView: UITextView!
+    @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var resumeButton: UIButton!
+    
+    @IBAction func changeMode(sender: UISegmentedControl) {
+    }
+    
+    @IBAction func changeVolumeBySlider(sender: UISlider) {
+    }
+    
+    @IBAction func changeVolumeByStepper(sender: AnyObject) {
+    }
+    
+    @IBAction func pause() {
+        pauseButton.hidden = true;
+        resumeButton.hidden = false;
+    }
+    @IBAction func resume() {
+        resumeButton.hidden = true;
+        pauseButton.hidden = false;
+    }
+    
+    @IBAction func prev() {
+    }
+    @IBAction func backward() {
+    }
+    @IBAction func forward() {
+    }
+    @IBAction func next() {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        resumeButton.hidden = true;
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
-
