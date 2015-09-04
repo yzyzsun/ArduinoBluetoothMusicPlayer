@@ -70,7 +70,7 @@ void loop() {
       break;
     case MP_VOL_CHANGE:
       while (!Serial.available());
-      vol = map(Serial.read(), 0, 16, MAXVOL, SILENT);
+      vol = map(Serial.read(), 0, 64, BOUND, 0);
       player.setVolume(vol);
       break;
     case MP_MODE_NORMAL:
