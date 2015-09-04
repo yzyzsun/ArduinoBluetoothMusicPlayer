@@ -12,8 +12,8 @@
 		9D0ABC581B8F7B8800FB0A23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D0ABC561B8F7B8800FB0A23 /* Main.storyboard */; };
 		9D0ABC5A1B8F7B8800FB0A23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D0ABC591B8F7B8800FB0A23 /* Images.xcassets */; };
 		9D0ABC5D1B8F7B8800FB0A23 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0ABC5B1B8F7B8800FB0A23 /* LaunchScreen.xib */; };
+		9D239EF01B99D12B008477DA /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D239EEF1B99D12B008477DA /* BLEManager.swift */; };
 		9DA5A9C11B98A03700E72E0C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9DA5A9C01B98A03700E72E0C /* FontAwesome.otf */; };
-		9DB303281B986B3000A15AC3 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB303271B986B3000A15AC3 /* BLEManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +24,8 @@
 		9D0ABC571B8F7B8800FB0A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D0ABC591B8F7B8800FB0A23 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D0ABC5C1B8F7B8800FB0A23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		9D239EEF1B99D12B008477DA /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		9DA5A9C01B98A03700E72E0C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
-		9DB303271B986B3000A15AC3 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 		9D0ABC4F1B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				9DB303271B986B3000A15AC3 /* BLEManager.swift */,
+				9D239EEF1B99D12B008477DA /* BLEManager.swift */,
 				9D0ABC541B8F7B8800FB0A23 /* ViewController.swift */,
 				9D0ABC561B8F7B8800FB0A23 /* Main.storyboard */,
 				9D0ABC501B8F7B8800FB0A23 /* Supporting Files */,
@@ -150,7 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D0ABC551B8F7B8800FB0A23 /* ViewController.swift in Sources */,
-				9DB303281B986B3000A15AC3 /* BLEManager.swift in Sources */,
+				9D239EF01B99D12B008477DA /* BLEManager.swift in Sources */,
 				9D0ABC531B8F7B8800FB0A23 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
