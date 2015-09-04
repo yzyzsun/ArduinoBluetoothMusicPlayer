@@ -32,11 +32,11 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoF-wV-o6a">
                                 <rect key="frame" x="16" y="28" width="568" height="264"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放模式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feh-qv-kos">
-                                <rect key="frame" x="16" y="356" width="64" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="模式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feh-qv-kos">
+                                <rect key="frame" x="16" y="356" width="32" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="dec-UJ-ABD"/>
                                 </constraints>
@@ -50,7 +50,7 @@
                                 </variation>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="K76-z7-Rob">
-                                <rect key="frame" x="88" y="352" width="496" height="29"/>
+                                <rect key="frame" x="56" y="352" width="528" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="tX4-Kw-o4i"/>
                                 </constraints>
@@ -70,7 +70,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fey-35-8k3">
-                                <rect key="frame" x="32" y="408" width="32" height="20"/>
+                                <rect key="frame" x="16" y="408" width="32" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="CpV-j8-0Ad"/>
                                     <constraint firstAttribute="width" constant="42" id="jTZ-od-8r1"/>
@@ -86,7 +86,7 @@
                                 </variation>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="0.0" maxValue="16" translatesAutoresizingMaskIntoConstraints="NO" id="NWB-zr-F9f">
-                                <rect key="frame" x="86" y="403" width="398" height="31"/>
+                                <rect key="frame" x="54" y="403" width="430" height="31"/>
                                 <connections>
                                     <action selector="changeVolumeBySlider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Ma9-CX-cb9"/>
                                 </connections>
