@@ -51,11 +51,19 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
         peripheral.delegate = self
-        if (bluno == peripheral) {
+        if (peripheral == bluno) {
             rootViewController.appendToLog("Successfully connected to \(bluno.name).\r\n")
             centralManager.stopScan()
             bluno.delegate = self
             bluno.discoverServices([BlunoServiceUUID])
+        }
+    }
+    
+    func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+        if (peripheral == bluno) {
+            rootViewController.appendToLog("Oops! Connection is broken.\r\n")
+            bluno = nil
+            startScanning()
         }
     }
     
@@ -64,9 +72,9 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             rootViewController.appendToLog(error.description)
             return
         }
-        for service in bluno.services {
-            if service.UUIDString == BlunoServiceUUID {
-                bluno.discoverCharacteristics([BlunoSerialUUID], forService: service as! CBService)
+        for service in bluno.services as! [CBService] {
+            if service.UUID == BlunoServiceUUID {
+                bluno.discoverCharacteristics([BlunoSerialUUID], forService: service)
             }
         }
     }
@@ -76,10 +84,10 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             rootViewController.appendToLog(error.description)
             return
         }
-        for characteristic in service.characteristics {
-            if characteristic.UUIDString == BlunoSerialUUID {
-                rootViewController.appendToLog("Ready to take control.\r\n")
-                blunoSerial = characteristic as! CBCharacteristic
+        for characteristic in service.characteristics as! [CBCharacteristic] {
+            if characteristic.UUID == BlunoSerialUUID {
+                rootViewController.appendToLog("[Ready]\r\n")
+                blunoSerial = characteristic
             }
         }
     }
