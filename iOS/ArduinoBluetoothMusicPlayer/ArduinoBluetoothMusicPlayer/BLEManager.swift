@@ -37,20 +37,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManagerDidUpdateState(central: CBCentralManager!) {
-        rootViewController = UIApplication.sharedApplication().keyWindow!.rootViewController as! ViewController
-        switch central.state {
-        case .PoweredOn:
+        if central.state == CBCentralManagerState.PoweredOn {
             startScanning()
-        case .PoweredOff:
-            let alert = UIAlertController(title: "蓝牙", message: "您未打开蓝牙，请在控制中心打开蓝牙", preferredStyle: UIAlertControllerStyle.Alert)
-            let defaultAction = UIAlertAction(title: "好的", style: UIAlertActionStyle.Default, handler: nil)
-            alert.addAction(defaultAction)
-            rootViewController.presentViewController(alert, animated: true, completion: nil)
-        case .Unsupported:
-            let alert = UIAlertController(title: "蓝牙", message: "您的设备不支持蓝牙", preferredStyle: UIAlertControllerStyle.Alert)
-            rootViewController.presentViewController(alert, animated: true, completion: nil)
-        default:
-            break
         }
     }
     
@@ -104,6 +92,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func startScanning() {
         centralManager.scanForPeripheralsWithServices([BlunoServiceUUID], options: nil)
+        rootViewController = UIApplication.sharedApplication().keyWindow!.rootViewController as! ViewController
         rootViewController.appendToLog("Scanning for bluetooth devices...\r\n")
     }
     
