@@ -37,8 +37,12 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManagerDidUpdateState(central: CBCentralManager!) {
+        rootViewController = UIApplication.sharedApplication().keyWindow!.rootViewController as! ViewController
         if central.state == CBCentralManagerState.PoweredOn {
             startScanning()
+        } else {
+            rootViewController.appendToLog("Bluetooth is shut down, please turn it on.\r\n")
+            clearPeripheral()
         }
     }
     
@@ -62,7 +66,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
         if (peripheral == bluno) {
             rootViewController.appendToLog("Oops! Connection is broken.\r\n")
-            bluno = nil
+            clearPeripheral()
             startScanning()
         }
     }
@@ -100,8 +104,12 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func startScanning() {
         centralManager.scanForPeripheralsWithServices([BlunoServiceUUID], options: nil)
-        rootViewController = UIApplication.sharedApplication().keyWindow!.rootViewController as! ViewController
         rootViewController.appendToLog("Scanning for bluetooth devices...\r\n")
+    }
+    
+    func clearPeripheral() {
+        bluno = nil
+        blunoSerial = nil
     }
     
     func sendCommand(command: BlunoCommand) {
