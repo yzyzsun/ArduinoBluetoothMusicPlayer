@@ -49,28 +49,25 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
-        if (bluno == nil) {
-            bluno = peripheral
-            centralManager.connectPeripheral(bluno, options: nil)
+        if (bluno != nil) {
+            return
         }
+        bluno = peripheral
+        centralManager.connectPeripheral(bluno, options: nil)
     }
     
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
         peripheral.delegate = self
-        if (peripheral == bluno) {
-            rootViewController.appendToLog("Successfully connected to \(bluno.name).\r\n")
-            centralManager.stopScan()
-            bluno.delegate = self
-            bluno.discoverServices([BlunoServiceUUID])
-        }
+        rootViewController.appendToLog("Successfully connected to \(bluno.name).\r\n")
+        centralManager.stopScan()
+        bluno.delegate = self
+        bluno.discoverServices([BlunoServiceUUID])
     }
     
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
-        if (peripheral == bluno) {
-            rootViewController.appendToLog("Oops! Connection is broken.\r\n")
-            clearPeripheral()
-            startScanning()
-        }
+        rootViewController.appendToLog("Oops! Connection is broken.\r\n")
+        clearPeripheral()
+        startScanning()
     }
     
     func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
@@ -115,16 +112,22 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     var ready: Bool {
-        return bluno != nil
+        return blunoSerial != nil
     }
     
     func sendCommand(command: BlunoCommand) {
-        bluno?.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        if !ready {
+            return
+        }
+        bluno!.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
     func sendCommand(command: BlunoCommand, var changeVolumeTo volume: UInt8) {
-        bluno?.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
-        bluno?.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        if !ready {
+            return
+        }
+        bluno!.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno!.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
 }
