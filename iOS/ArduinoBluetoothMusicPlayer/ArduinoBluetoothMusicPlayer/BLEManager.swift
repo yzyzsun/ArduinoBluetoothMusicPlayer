@@ -36,6 +36,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
+    static let sharedInstance = BLEManager()
+    
     func centralManagerDidUpdateState(central: CBCentralManager!) {
         rootViewController = UIApplication.sharedApplication().keyWindow!.rootViewController as! ViewController
         if central.state == CBCentralManagerState.PoweredOn {
@@ -102,7 +104,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     private var rootViewController: ViewController!
     
-    func startScanning() {
+    private func startScanning() {
         centralManager.scanForPeripheralsWithServices([BlunoServiceUUID], options: nil)
         rootViewController.appendToLog("Scanning for bluetooth devices...\r\n")
     }
@@ -112,13 +114,17 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         blunoSerial = nil
     }
     
+    var ready: Bool {
+        return bluno != nil
+    }
+    
     func sendCommand(command: BlunoCommand) {
-        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno?.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
     func sendCommand(command: BlunoCommand, var changeVolumeTo volume: UInt8) {
-        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
-        bluno.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno?.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno?.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
 }

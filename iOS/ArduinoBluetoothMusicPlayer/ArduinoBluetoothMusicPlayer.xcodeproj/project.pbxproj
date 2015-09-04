@@ -58,6 +58,7 @@
 		9D0ABC4F1B8F7B8800FB0A23 /* ArduinoBluetoothMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				9D0ABC521B8F7B8800FB0A23 /* AppDelegate.swift */,
 				9D239EEF1B99D12B008477DA /* BLEManager.swift */,
 				9D0ABC541B8F7B8800FB0A23 /* ViewController.swift */,
 				9D0ABC561B8F7B8800FB0A23 /* Main.storyboard */,
@@ -69,7 +70,6 @@
 		9D0ABC501B8F7B8800FB0A23 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9D0ABC521B8F7B8800FB0A23 /* AppDelegate.swift */,
 				9DA5A9C01B98A03700E72E0C /* FontAwesome.otf */,
 				9D0ABC591B8F7B8800FB0A23 /* Images.xcassets */,
 				9D0ABC511B8F7B8800FB0A23 /* Info.plist */,

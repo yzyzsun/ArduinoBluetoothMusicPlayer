@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bleManager = BLEManager()
+        bleManager = BLEManager.sharedInstance
     }
     
     var bleManager: BLEManager!
