@@ -15,7 +15,7 @@ iOS app 由 Swift 编写，使用了苹果的 `Core Bluetooth` API，该框架�
 
 ## 示意图
 
-![Sketch](./sketch.jpg)
+[![Sketch](./sketch.jpg)](http://v.youku.com/v_show/id_XMTMyODA3MDQwNA==.html)
 
 ## 参考资料
 
