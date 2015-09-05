@@ -101,6 +101,14 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
+    func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+        if error != nil {
+            rootViewController.appendToLog(error.description)
+            return
+        }
+        rootViewController.appendToLog(NSString(data: characteristic.value, encoding: NSASCIIStringEncoding) as! String)
+    }
+    
     private var centralManager: CBCentralManager!
     private var bluno: CBPeripheral!
     private var blunoSerial: CBCharacteristic!
