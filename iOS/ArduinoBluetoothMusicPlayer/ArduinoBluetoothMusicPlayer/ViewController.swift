@@ -72,6 +72,7 @@ class ViewController: UIViewController {
     
     func appendToLog(message: String) {
         logView.text! += message
+        logView.font = UIFont.systemFontOfSize(14)
     }
 
 }

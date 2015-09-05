@@ -40,11 +40,17 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func centralManagerDidUpdateState(central: CBCentralManager!) {
         rootViewController = UIApplication.sharedApplication().keyWindow!.rootViewController as! ViewController
-        if central.state == CBCentralManagerState.PoweredOn {
+        switch central.state {
+        case .PoweredOn:
             startScanning()
-        } else {
+        case .PoweredOff:
             rootViewController.appendToLog("Bluetooth is shut down, please turn it on.\r\n")
             clearPeripheral()
+        case .Unsupported:
+            let alert = UIAlertController(title: "您的设备不支持蓝牙 4.0", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            rootViewController.presentViewController(alert, animated: true, completion: nil)
+        default:
+            break
         }
     }
     
