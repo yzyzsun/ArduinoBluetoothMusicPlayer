@@ -2,15 +2,17 @@
 
 ## 简介
 
-使用手机蓝牙控制单片机播放存储在 microSD 上的音乐。iOS app 由 Swift 编写，使用了苹果的 `Core Bluetooth` API；Arduino 代码使用了 Seeed Studio 的库 `MusicPlayer`。
+使用手机蓝牙控制单片机播放存储在 microSD 上的音乐，可以实现暂停、快进快退、切换曲目、控制音量、切换播放模式等功能。
+
+iOS app 由 Swift 编写，使用了苹果的 `Core Bluetooth` API，该框架只支持蓝牙 4.0（BLE），且要求操作系统在 iOS 5 以上。Arduino 代码使用了硬件商 Seeed Studio 的官方库 `MusicPlayer`。
 
 这是我 2015 年暑期 Arduino 课程的实践作业。
 
 ## 设备
 
-* DFRobot Bluno V2.0 (Arduino + 蓝牙 4.0)
-* Geeetech Music Shield V2.0 (音乐扩展板)
-* iPhone 5s (iOS 8)
+* DFRobot Bluno (Arduino + 蓝牙 4.0)
+* Seeed Music Shield (音乐扩展板)
+* iPhone (iOS 5+)
 * 迷你音响
 
 ## 示意图
