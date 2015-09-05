@@ -133,15 +133,15 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         if !ready {
             return
         }
-        bluno!.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
     func sendCommand(command: BlunoCommand, var changeVolumeTo volume: UInt8) {
         if !ready {
             return
         }
-        bluno!.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
-        bluno!.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
 }
