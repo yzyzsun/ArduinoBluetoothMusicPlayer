@@ -1,7 +1,5 @@
 # Arduino 蓝牙音乐播放器
 
-## 简介
-
 使用手机蓝牙控制单片机播放存储在 microSD 上的音乐，可以实现暂停、快进快退、切换曲目、控制音量、切换播放模式等功能。
 
 iOS app 由 Swift 编写，使用了苹果的 `Core Bluetooth` API，该框架只支持蓝牙 4.0（BLE），且要求操作系统在 iOS 5 以上。Arduino 代码使用了硬件商 Seeed Studio 的官方库 `MusicPlayer`。
@@ -17,7 +15,7 @@ iOS app 由 Swift 编写，使用了苹果的 `Core Bluetooth` API，该框架�
 
 ## 示意图
 
-![Sketch](./sketch.png)
+![Sketch](./sketch.jpg)
 
 ## 参考资料
 
