@@ -38,7 +38,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     static let sharedInstance = BLEManager()
     
-    func centralManagerDidUpdateState(central: CBCentralManager!) {
+    func centralManagerDidUpdateState(central: CBCentralManager) {
         rootViewController = UIApplication.sharedApplication().keyWindow!.rootViewController as! ViewController
         switch central.state {
         case .PoweredOn:
@@ -54,7 +54,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
+    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
         if (bluno != nil) {
             return
         }
@@ -62,7 +62,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         centralManager.connectPeripheral(bluno, options: nil)
     }
     
-    func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
+    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         peripheral.delegate = self
         rootViewController.appendToLog("Successfully connected to \(bluno.name).\r\n")
         centralManager.stopScan()
@@ -70,30 +70,30 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         bluno.discoverServices([BlunoServiceUUID])
     }
     
-    func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         rootViewController.appendToLog("Oops! Connection is broken.\r\n")
         clearPeripheral()
         startScanning()
     }
     
-    func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
-        if error != nil {
-            rootViewController.appendToLog(error.description)
+    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+        if let err = error {
+            rootViewController.appendToLog(err.description)
             return
         }
-        for service in bluno.services as! [CBService] {
+        for service in bluno.services! {
             if service.UUID == BlunoServiceUUID {
                 bluno.discoverCharacteristics([BlunoSerialUUID], forService: service)
             }
         }
     }
     
-    func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
-        if error != nil {
-            rootViewController.appendToLog(error.description)
+    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+        if let err = error {
+            rootViewController.appendToLog(err.description)
             return
         }
-        for characteristic in service.characteristics as! [CBCharacteristic] {
+        for characteristic in service.characteristics! {
             if characteristic.UUID == BlunoSerialUUID {
                 rootViewController.appendToLog("[Ready]\r\n")
                 blunoSerial = characteristic
@@ -101,12 +101,12 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
-    func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
-        if error != nil {
-            rootViewController.appendToLog(error.description)
+    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        if let err = error {
+            rootViewController.appendToLog(err.description)
             return
         }
-        rootViewController.appendToLog(NSString(data: characteristic.value, encoding: NSASCIIStringEncoding) as! String)
+        rootViewController.appendToLog(NSString(data: characteristic.value!, encoding: NSASCIIStringEncoding) as! String)
     }
     
     private var centralManager: CBCentralManager!
@@ -133,14 +133,14 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         if !ready {
             return
         }
-        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding)!, forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
     func sendCommand(command: BlunoCommand, var changeVolumeTo volume: UInt8) {
         if !ready {
             return
         }
-        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding)!, forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
         bluno.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
