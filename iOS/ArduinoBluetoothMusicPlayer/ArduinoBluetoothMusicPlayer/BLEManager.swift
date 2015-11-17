@@ -29,7 +29,7 @@ enum BlunoCommand: String {
     case ModeRepeatSingle = "m"
 }
 
-class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
+class BLEManager: NSObject {
     
     override init() {
         super.init()
@@ -38,6 +38,45 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     static let sharedInstance = BLEManager()
     
+    private var centralManager: CBCentralManager!
+    private var bluno: CBPeripheral!
+    private var blunoSerial: CBCharacteristic!
+    
+    private var rootViewController: ViewController!
+    
+    private func startScanning() {
+        centralManager.scanForPeripheralsWithServices([BlunoServiceUUID], options: nil)
+        rootViewController.appendToLog("Scanning for bluetooth devices...\r\n")
+    }
+    
+    func clearPeripheral() {
+        bluno = nil
+        blunoSerial = nil
+    }
+    
+    var ready: Bool {
+        return blunoSerial != nil
+    }
+    
+    func sendCommand(command: BlunoCommand) {
+        if !ready {
+            return
+        }
+        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding)!, forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+    }
+    
+    func sendCommand(command: BlunoCommand, var changeVolumeTo volume: UInt8) {
+        if !ready {
+            return
+        }
+        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding)!, forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+        bluno.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
+    }
+    
+}
+
+extension BLEManager: CBCentralManagerDelegate {
+
     func centralManagerDidUpdateState(central: CBCentralManager) {
         rootViewController = UIApplication.sharedApplication().keyWindow!.rootViewController as! ViewController
         switch central.state {
@@ -75,7 +114,11 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         clearPeripheral()
         startScanning()
     }
-    
+
+}
+
+extension BLEManager: CBPeripheralDelegate {
+
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
         if let err = error {
             rootViewController.appendToLog(err.description)
@@ -107,41 +150,6 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             return
         }
         rootViewController.appendToLog(NSString(data: characteristic.value!, encoding: NSASCIIStringEncoding) as! String)
-    }
-    
-    private var centralManager: CBCentralManager!
-    private var bluno: CBPeripheral!
-    private var blunoSerial: CBCharacteristic!
-    
-    private var rootViewController: ViewController!
-    
-    private func startScanning() {
-        centralManager.scanForPeripheralsWithServices([BlunoServiceUUID], options: nil)
-        rootViewController.appendToLog("Scanning for bluetooth devices...\r\n")
-    }
-    
-    func clearPeripheral() {
-        bluno = nil
-        blunoSerial = nil
-    }
-    
-    var ready: Bool {
-        return blunoSerial != nil
-    }
-    
-    func sendCommand(command: BlunoCommand) {
-        if !ready {
-            return
-        }
-        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding)!, forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
-    }
-    
-    func sendCommand(command: BlunoCommand, var changeVolumeTo volume: UInt8) {
-        if !ready {
-            return
-        }
-        bluno.writeValue(command.rawValue.dataUsingEncoding(NSASCIIStringEncoding)!, forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
-        bluno.writeValue(NSData(bytes: &volume, length: 1), forCharacteristic: blunoSerial, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
 }
