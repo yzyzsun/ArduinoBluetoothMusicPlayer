@@ -15,10 +15,11 @@ iOS app 由 Swift 编写，使用了苹果的 `Core Bluetooth` API，该框架�
 
 ## 示意图
 
-[![Sketch](./sketch.jpg)](http://v.youku.com/v_show/id_XMTMyODA3MDQwNA==.html)
+[![Image](./image.jpg)](http://v.youku.com/v_show/id_XMTMyODA3MDQwNA==.html)
 
 ## 参考资料
 
 * [Bluno SKU:DFR0267 - DFRobot Wiki](http://www.dfrobot.com/wiki/index.php/Bluno_SKU:DFR0267)
 * [Music Shield V2.0 - Seeed Wiki](http://www.seeedstudio.com/wiki/index.php?title=Music_Shield_V2.0&uselang=en)
 * [Core Bluetooth Programming Guide - iOS Developer Library](https://developer.apple.com/library/ios/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/AboutCoreBluetooth/Introduction.html)
+
