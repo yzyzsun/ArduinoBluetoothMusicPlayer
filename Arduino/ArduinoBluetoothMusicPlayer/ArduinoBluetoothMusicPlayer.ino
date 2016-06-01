@@ -30,9 +30,9 @@ void setup() {
 }
 
 void loop() {
-  // vol is in fact reversed
-  // constant SILENT(0) stands for maximum vol
-  // as MAXVOL(254) stands for minimum vol
+  // The value of `vol` is reversed in fact:
+  // 0 stands for maximum vol while
+  // 254 stands for minimum vol
   static unsigned char vol = BOUND / 2;
   
   if (Serial.available()) {
